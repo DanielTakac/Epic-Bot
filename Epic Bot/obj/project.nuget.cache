@@ -1,5 +1,6 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "tkWEAzr1YddEgaO96gY6hGn2Sgbb5UpTn9y6swIaj0H53bEtHi4yr5puCnLNkjxf5grs9PlaYw46BY7/2t3Kjw==",
   "success": true,
   "projectFilePath": "C:\\Users\\herod\\OneDrive\\Počítač\\Source\\Repos\\Epic-Bot\\Epic Bot\\Epic Bot.csproj",
@@ -89,5 +90,11 @@
     "C:\\Users\\herod\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\herod\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
   ],
+=======
+  "dgSpecHash": "yaIFyFy5mndC2jnKxWWKDKy7zKkVVWguIuCqxcwCb5WswGHikbeOWQ7tojoMOJsKyUwlG4GzNcnqQaUHw6Dqiw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jakub\\OneDrive\\Počítač\\C# ucenie,projekty\\projects\\epicbot(danko-kupko)\\Epic Bot\\Epic Bot.csproj",
+  "expectedPackageFiles": [],
+>>>>>>> a8aa19871da6a0e6cee7b3a0c4ff5403ddf38f89
   "logs": []
 }
