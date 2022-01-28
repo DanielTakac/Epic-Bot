@@ -84,6 +84,10 @@ namespace PepejdzaBot {
             Commands = Client.UseCommandsNext(commandsConfig);
 
             Commands.RegisterCommands<BasicCommands>();
+            Commands.RegisterCommands<MathCommands>();
+            Commands.RegisterCommands<AdminCommands>();
+            Commands.RegisterCommands<VoiceCommands>();
+            Commands.RegisterCommands<OtherCommands>();
 
             await Client.ConnectAsync();
 

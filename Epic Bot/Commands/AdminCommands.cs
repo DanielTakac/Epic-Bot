@@ -195,7 +195,7 @@ namespace Epic_Bot.Commands {
         }
 
         [Command("Ban")]
-        [Description("")]
+        [Description("Bans the specified user")]
         public async Task Ban(CommandContext ctx, long id) {
 
             if (IsAdmin(ctx.User.Id)) {
@@ -231,7 +231,7 @@ namespace Epic_Bot.Commands {
         }
 
         [Command("Unban")]
-        [Description("")]
+        [Description("Unbans the specified user")]
         public async Task Unban(CommandContext ctx, long id) {
 
             if (IsAdmin(ctx.User.Id)) {

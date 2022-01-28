@@ -1,8 +1,12 @@
-﻿using DSharpPlus.CommandsNext;
+﻿using DSharpPlus;
+using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
 using GiphyDotNet.Manager;
 using GiphyDotNet.Model.Parameters;
+using PepejdzaBot;
+using PepejdzaBot.Handlers.Dialogue;
+using PepejdzaBot.Handlers.Dialogue.Steps;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +18,6 @@ namespace Epic_Bot.Commands {
     internal class BasicCommands : BaseCommandModule {
 
         [Command("Ping")]
-        [Description("")]
         public async Task Ping(CommandContext ctx) {
 
             var embed = new DiscordEmbedBuilder {
@@ -115,6 +118,119 @@ namespace Epic_Bot.Commands {
             await ctx.Channel.SendMessageAsync(user);
             await ctx.Channel.SendMessageAsync(user);
             await ctx.Channel.SendMessageAsync(user);
+
+        }
+
+        [Command("Time")]
+        [Description("Time since the bot started")]
+        public async Task Time(CommandContext ctx) {
+
+            var elapsed = Bot.sw.Elapsed;
+
+            //String cutter
+            string input = elapsed.ToString();
+            int index = input.IndexOf(".");
+            if (index >= 0) {
+
+                input = input.Substring(0, index);
+
+            }
+
+            var embed = new DiscordEmbedBuilder {
+
+                Title = $"Time since the start:\n{input}",
+                Color = DiscordColor.Orange,
+                Description = ":hourglass:"
+
+            };
+
+            await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+
+        }
+
+        [Command("Channel")]
+        [Description("Creates a temporary discord channel")]
+        public async Task Channel(CommandContext ctx) {
+
+            if (ctx.Guild.Id != 760171471308980254) {
+
+                return;
+
+            }
+
+            var intStep3 = new IntStep("Choose how long the channel should last (in hours)", null, 1);
+            var textStep2 = new TextStep("Choose a name for the temporary voice channel", intStep3);
+            var textStep1 = new TextStep("Choose the type of channel to be created (voice/text)", textStep2);
+
+            int channelTime = 0;
+
+            string channelName = string.Empty;
+
+            string channelType = string.Empty;
+
+            textStep1.OnValidResult += (result1) => channelType = result1;
+            textStep2.OnValidResult += (result2) => channelName = result2;
+            intStep3.OnValidResult += (result3) => channelTime = result3;
+
+            var inputDialogueHandler = new DialogueHandler(ctx.Client, ctx.Channel, ctx.User, textStep1);
+
+            bool succeeded = await inputDialogueHandler.ProcessDialogue().ConfigureAwait(false);
+
+            if (!succeeded) { return; }
+
+            DiscordChannel channel = ctx.Guild.CreateChannelAsync("Voice", ChannelType.Voice).Result;
+
+            await channel.DeleteAsync();
+
+            if (channelType == "voice") {
+
+                var parent = ctx.Guild.GetChannel(767800824565858344);
+
+                channel = ctx.Guild.CreateChannelAsync(channelName, ChannelType.Voice, parent).Result;
+
+                channel.ModifyPositionAsync(1).Wait();
+
+            } else if (channelType == "text") {
+
+                var parent = ctx.Guild.GetChannel(764863805439082516);
+
+                channel = ctx.Guild.CreateChannelAsync(channelName, ChannelType.Text, parent).Result;
+
+                channel.ModifyPositionAsync(1).Wait();
+
+            } else {
+
+                var errorEmbed = new DiscordEmbedBuilder {
+
+                    Title = "Something went wrong!",
+                    Color = DiscordColor.Red,
+                    Description = ":exclamation: :exclamation: :exclamation:"
+
+                };
+
+                var errorMessage = await ctx.Channel.SendMessageAsync(embed: errorEmbed).ConfigureAwait(false);
+
+                return;
+
+            }
+
+            var embed = new DiscordEmbedBuilder {
+
+                Title = $"Temporary {channelType} channel named '{channelName}' created and will be deleted in {channelTime} hours",
+                Color = DiscordColor.Orange,
+                Description = ""
+
+            };
+
+            await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+
+            await Task.Delay(new TimeSpan(channelTime, 0, 0)).ContinueWith(o => { DeleteChannel(channel); });
+
+        }
+
+        public async void DeleteChannel(DiscordChannel channel) {
+
+            await channel.DeleteAsync("Deleting temporary channel");
 
         }
 
