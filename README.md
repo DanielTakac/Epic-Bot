@@ -5,25 +5,7 @@
 Made using ***C#/DSharpPlus***
 
 #### Basic Commands:
-- Ping 
-```csharp
-[Command("Ping")]
-[Description("")]
-public async Task Ping(CommandContext ctx) {
-
-    var embed = new DiscordEmbedBuilder {
-
-        Title = "Pong!",
-        Color = DiscordColor.Green,
-        Description = ":ping_pong:"
-
-    };
-
-    var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
-
-}
-```
-
+- Ping
 - Roll
 - Random Number
 - Random
