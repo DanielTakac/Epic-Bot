@@ -69,7 +69,7 @@ namespace Epic_Bot.Commands {
 
         [Command("Custom_Message")]
         [Description("Sends a custom message to a specific channel")]
-        public async Task CustomMessage(CommandContext ctx, [Description("ID of the channel where you want the message to be sent")] long channelID, [Description("Text of the message")] string message) {
+        public async Task CustomMessage(CommandContext ctx, [Description("ID of the channel where you want the message to be sent")] long channelID, [Description("Text of the message")] [RemainingText] string message) {
 
             if (IsAdmin(ctx.User.Id)) {
 
