@@ -31,8 +31,6 @@ Made using ***C#/DSharpPlus***
 - Exit
 - Restart
 - System_Info
-- Ban
-- Unban
 
 #### Voice Commands:
 - JoinVoice
