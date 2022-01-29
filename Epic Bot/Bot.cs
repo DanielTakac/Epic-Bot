@@ -11,7 +11,6 @@ using DSharpPlus.Interactivity.Extensions;
 using DSharpPlus.Entities;
 using Newtonsoft.Json.Linq;
 using DSharpPlus.VoiceNext;
-using CustomLib;
 using Epic_Bot;
 using Epic_Bot.Commands;
 

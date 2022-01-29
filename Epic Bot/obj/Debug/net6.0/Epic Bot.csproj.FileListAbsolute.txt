@@ -6,7 +6,6 @@ C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6.0\Epic Bot.pdb
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6.0\ActionScheduler.dll
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6.0\ConcurrentCollections.dll
-C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6.0\CustomLib.dll
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6.0\DSharpPlus.dll
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6.0\DSharpPlus.CommandsNext.dll
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6.0\DSharpPlus.Interactivity.dll
