@@ -14,7 +14,8 @@ namespace Epic_Bot.Commands {
     internal class AdminCommands : BaseCommandModule {
 
         private ulong[] adminIds = { 437896136590884876, // Void()
-                                     503234820457889802 }; // Nickname0081
+                                     503234820457889802, // Nickname0081
+                                     907387715312566302 }; // Emmik
 
         private bool IsAdmin(ulong id) {
 
@@ -177,78 +178,6 @@ namespace Epic_Bot.Commands {
                 };
 
                 var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
-
-            } else {
-
-                var embed = new DiscordEmbedBuilder {
-
-                    Title = "You do not have permission to use this command.",
-                    Color = DiscordColor.Red,
-                    Description = ":no_entry_sign:"
-
-                };
-
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
-
-            }
-
-        }
-
-        [Command("Ban")]
-        [Description("Bans the specified user")]
-        public async Task Ban(CommandContext ctx, long id) {
-
-            if (IsAdmin(ctx.User.Id)) {
-
-                var embed = new DiscordEmbedBuilder {
-
-                    Title = "User " + id + " has been banned!",
-                    Color = DiscordColor.Orange,
-                    Description = ":orange_square:"
-
-                };
-
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
-
-                var member = await ctx.Guild.GetMemberAsync((ulong)id);
-
-                await member.BanAsync();
-
-            } else {
-
-                var embed = new DiscordEmbedBuilder {
-
-                    Title = "You do not have permission to use this command.",
-                    Color = DiscordColor.Red,
-                    Description = ":no_entry_sign:"
-
-                };
-
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
-
-            }
-
-        }
-
-        [Command("Unban")]
-        [Description("Unbans the specified user")]
-        public async Task Unban(CommandContext ctx, long id) {
-
-            if (IsAdmin(ctx.User.Id)) {
-
-                var embed = new DiscordEmbedBuilder {
-
-                    Title = "User " + id + " has been unbanned!",
-                    Color = DiscordColor.SpringGreen,
-                    Description = ":green_square:"
-
-                };
-
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
-
-                var member = await ctx.Guild.GetMemberAsync((ulong)id);
-
-                await member.UnbanAsync();
 
             } else {
 
