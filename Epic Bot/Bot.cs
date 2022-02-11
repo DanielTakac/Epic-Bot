@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
@@ -9,7 +8,6 @@ using Microsoft.Extensions.Logging;
 using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Extensions;
 using DSharpPlus.Entities;
-using Newtonsoft.Json.Linq;
 using DSharpPlus.VoiceNext;
 using Epic_Bot;
 using Epic_Bot.Commands;

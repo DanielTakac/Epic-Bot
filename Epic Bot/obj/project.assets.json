@@ -4437,7 +4437,7 @@
   },
   "packageFolders": {
     "C:\\Users\\herod\\.nuget\\packages\\": {},
-    "G:\\Program Files (x86)\\Visual Studio Shared\\NuGetPackages": {}
+    "H:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -4449,11 +4449,12 @@
       "outputPath": "C:\\Users\\herod\\OneDrive\\Počítač\\Source\\Repos\\Epic-Bot\\Epic Bot\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "G:\\Program Files (x86)\\Visual Studio Shared\\NuGetPackages"
+        "H:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\herod\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "H:\\Programs x86\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -4461,9 +4462,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Users\\herod\\source\\repos\\NuGet": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.emzi0767.com/api/v3/index.json": {},
-        "https://www.myget.org/F/discord-net/api/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
@@ -4529,7 +4528,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "H:\\Programs\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

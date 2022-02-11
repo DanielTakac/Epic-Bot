@@ -7,11 +7,6 @@ using GiphyDotNet.Model.Parameters;
 using PepejdzaBot;
 using PepejdzaBot.Handlers.Dialogue;
 using PepejdzaBot.Handlers.Dialogue.Steps;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Epic_Bot.Commands {
 
