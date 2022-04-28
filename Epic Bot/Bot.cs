@@ -130,11 +130,129 @@ namespace PepejdzaBot {
 
         }
 
-        private Task Client_MessageDeleted(DiscordClient sender, MessageDeleteEventArgs e) {
+        private async Task Client_MessageDeleted(DiscordClient sender, MessageDeleteEventArgs e) {
 
             // What happens when a message is deleted
 
-            return Task.CompletedTask;
+            if (e.Guild == null) return; // Returns if the message was in the DMs
+
+            ulong[] blacklistedUsers = { 503234820457889802, 462269249902346241 };
+
+            bool hasContent = false;
+            bool hasId = false;
+            ulong authorId = 0;
+            string content = string.Empty;
+
+            if (e.Message.Content != null) {
+
+                hasContent = true;
+
+                content = e.Message.Content;
+
+            }
+
+            if (e.Message.Author != null) {
+
+                // Returns if the user is is blacklisted
+                for (int i = 0; i < blacklistedUsers.Length; i++) {
+
+                    if (e.Message.Author.Id == blacklistedUsers[i]) return;
+
+                }
+
+                hasId = true;
+
+                authorId = e.Message.Author.Id;
+
+            }
+
+            DiscordChannel channel = e.Guild.GetDefaultChannel();
+
+            if (e.Guild.Id == 760171471308980254) {
+
+                channel = e.Guild.GetChannel(926892307947601960);
+
+            } else if (e.Guild.Id == 748425033587752991) {
+
+                channel = e.Guild.GetChannel(929070898693173349);
+
+            }
+
+            switch (e.Guild.Id) {
+
+                case 760171471308980254:
+                    channel = e.Guild.GetChannel(926892307947601960);
+                    break;
+                case 748425033587752991:
+                    channel = e.Guild.GetChannel(929070898693173349);
+                    break;
+                case 969296497512435833:
+                    channel = e.Guild.GetChannel(969296497512435836);
+                    break;
+
+            }
+
+            if (hasId) {
+
+                await channel.SendMessageAsync($"User **<@{authorId}>** just deleted a message in this server!").ConfigureAwait(false);
+
+            } else {
+
+                await channel.SendMessageAsync("Someone just deleted a message in this server!").ConfigureAwait(false);
+
+            }
+
+            if (hasContent) {
+
+                await channel.SendMessageAsync($"Message: *{content}*").ConfigureAwait(false);
+
+            }
+
+        }
+
+        private async void Welcome(GuildMemberAddEventArgs e) {
+
+            DiscordChannel channel;
+
+            switch (e.Guild.Id) {
+
+                case 760171471308980254:
+                    channel = e.Guild.GetChannel(926892307947601960);
+                    await channel.SendMessageAsync($"**<@{e.Member.Id}>** just joined **{e.Guild.Name}**!\nPogChamp").ConfigureAwait(false);
+                    break;
+                case 748425033587752991:
+                    channel = e.Guild.GetChannel(929070898693173349);
+                    await channel.SendMessageAsync($"**<@{e.Member.Id}>** just joined **{e.Guild.Name}**!\nPogChamp").ConfigureAwait(false);
+                    break;
+                case 969296497512435833:
+                    channel = e.Guild.GetChannel(969296497512435836);
+                    await channel.SendMessageAsync($"**<@{e.Member.Id}>** just joined **{e.Guild.Name}**!\nPogChamp").ConfigureAwait(false);
+                    break;
+
+            }
+
+        }
+
+        private async void Bye(GuildMemberRemoveEventArgs e) {
+
+            DiscordChannel channel;
+
+            switch (e.Guild.Id) {
+
+                case 760171471308980254:
+                    channel = e.Guild.GetChannel(926892307947601960);
+                    await channel.SendMessageAsync($"**<@{e.Member.Id}>** just left **{e.Guild.Name}**!\nWeirdChamp").ConfigureAwait(false); 
+                    break;
+                case 748425033587752991:
+                    channel = e.Guild.GetChannel(929070898693173349);
+                    await channel.SendMessageAsync($"**<@{e.Member.Id}>** just left **{e.Guild.Name}**!\nWeirdChamp").ConfigureAwait(false); 
+                    break;
+                case 969296497512435833:
+                    channel = e.Guild.GetChannel(969296497512435836);
+                    await channel.SendMessageAsync($"**<@{e.Member.Id}>** just left **{e.Guild.Name}**!\nWeirdChamp").ConfigureAwait(false); 
+                    break;
+
+            }
 
         }
 
@@ -142,13 +260,25 @@ namespace PepejdzaBot {
 
             // What happens when someone joins the server
 
+            Console.WriteLine("User joined");
+
+            if (e.Guild == null) return Task.CompletedTask; // Returns if the message was in the DMs
+
+            Welcome(e);
+
             return Task.CompletedTask;
 
         }
 
         private Task Client_GuildMemberRemoved(DiscordClient sender, GuildMemberRemoveEventArgs e) {
 
-            // What happens when leaves the server
+            // What happens when someone leaves the server
+
+            Console.WriteLine("User left");
+
+            if (e.Guild == null) return Task.CompletedTask; // Returns if the message was in the DMs
+
+            Bye(e);
 
             return Task.CompletedTask;
 
