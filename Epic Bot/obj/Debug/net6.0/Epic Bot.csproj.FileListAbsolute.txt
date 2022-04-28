@@ -2,7 +2,6 @@ C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6.0\Epic Bot.deps.json
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6.0\Epic Bot.runtimeconfig.json
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6.0\Epic Bot.dll
-C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6.0\ref\Epic Bot.dll
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6.0\Epic Bot.pdb
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6.0\ActionScheduler.dll
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\bin\Debug\net6.0\ConcurrentCollections.dll
@@ -31,3 +30,4 @@ C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\obj\Debug\net6
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\obj\Debug\net6.0\ref\Epic Bot.dll
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\obj\Debug\net6.0\Epic Bot.pdb
 C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\obj\Debug\net6.0\Epic Bot.genruntimeconfig.cache
+C:\Users\herod\OneDrive\Počítač\Source\Repos\Epic-Bot\Epic Bot\obj\Debug\net6.0\refint\Epic Bot.dll

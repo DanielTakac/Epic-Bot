@@ -23,7 +23,7 @@ namespace Epic_Bot.Commands {
 
             };
 
-            var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+            await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
         }
 
@@ -33,7 +33,7 @@ namespace Epic_Bot.Commands {
 
             Random rd = new Random();
 
-            int rand = rd.Next(1, 7);
+            int rand = rd.Next(1, 7); // Random number from 1 to 6
 
             await ctx.Channel.SendMessageAsync(rand.ToString()).ConfigureAwait(false);
 
@@ -57,7 +57,7 @@ namespace Epic_Bot.Commands {
 
             };
 
-            var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+            await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
         }
 
@@ -80,7 +80,7 @@ namespace Epic_Bot.Commands {
 
         [Command("GIF")]
         [Description("Searches for a GIF based on the tag parameter")]
-        public async Task GIF(CommandContext ctx, [Description("Tag used to search for a GIF")] string tag) {
+        public async Task GIF(CommandContext ctx, [Description("Tag used to search for a GIF")][RemainingText] string tag) {
 
             var giphy = new Giphy("nz4ogcR7j9ApSBnOxsc1Zj5mPXM7Jwan");
 
