@@ -134,7 +134,7 @@ namespace PepejdzaBot {
 
             // What happens when a message is deleted
 
-            if (e.Guild == null) return; // Returns if the message was in the DMs
+            if (e.Guild == null) return; // Returns if the message was in a DM
 
             ulong[] blacklistedUsers = { 503234820457889802, 462269249902346241 };
 
@@ -262,7 +262,7 @@ namespace PepejdzaBot {
 
             Console.WriteLine("User joined");
 
-            if (e.Guild == null) return Task.CompletedTask; // Returns if the message was in the DMs
+            if (e.Guild == null) return Task.CompletedTask; // Returns if the message was in a DM
 
             Welcome(e);
 
@@ -276,7 +276,7 @@ namespace PepejdzaBot {
 
             Console.WriteLine("User left");
 
-            if (e.Guild == null) return Task.CompletedTask; // Returns if the message was in the DMs
+            if (e.Guild == null) return Task.CompletedTask; // Returns if the message was in a DM
 
             Bye(e);
 

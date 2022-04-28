@@ -171,6 +171,92 @@ namespace Epic_Bot.Commands {
 
         }
 
+        [Command("Ban")]
+        [Description("")]
+        public async Task Ban(CommandContext ctx, long id) {
+
+            if (IsAdmin(ctx.User.Id)) {
+
+                var embed = new DiscordEmbedBuilder {
+
+                    Title = "User " + id + " has been banned!",
+                    Color = DiscordColor.Orange,
+                    Description = ":orange_square:"
+
+                };
+
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+
+                var member = await ctx.Guild.GetMemberAsync((ulong)id);
+
+                await member.BanAsync();
+
+            } else {
+
+                SendErrorMessage(ctx);
+
+            }
+
+        }
+
+        [Command("Unban")]
+        [Description("")]
+        public async Task Unban(CommandContext ctx, long id) {
+
+            if (IsAdmin(ctx.User.Id)) {
+
+                var embed = new DiscordEmbedBuilder {
+
+                    Title = "User " + id + " has been unbanned!",
+                    Color = DiscordColor.SpringGreen,
+                    Description = ":green_square:"
+
+                };
+
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+
+                var member = await ctx.Guild.GetMemberAsync((ulong)id);
+
+                await member.UnbanAsync();
+
+            } else {
+
+                SendErrorMessage(ctx);
+
+            }
+
+        }
+
+        [Command("Mute")]
+        [Description("Mutes the selected user")]
+        public async Task Mute(CommandContext ctx, long user_id) {
+
+            if (IsAdmin(ctx.User.Id)) {
+
+                var member = ctx.Guild.GetMemberAsync((ulong)user_id);
+
+                var name = member.Result.Nickname;
+
+                var embed = new DiscordEmbedBuilder {
+
+                    Title = $"{name} has been muted",
+                    Color = DiscordColor.Orange,
+                    Description = ":mute:"
+
+                };
+
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+
+                await member.Result.SetMuteAsync(true);
+
+            } else {
+
+                SendErrorMessage(ctx);
+
+            }
+
+        }
+
     }
 
 }

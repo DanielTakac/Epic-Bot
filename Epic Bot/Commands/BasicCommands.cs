@@ -2,6 +2,7 @@
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
+using DSharpPlus.Interactivity.Extensions;
 using GiphyDotNet.Manager;
 using GiphyDotNet.Model.Parameters;
 using PepejdzaBot;
@@ -216,6 +217,95 @@ namespace Epic_Bot.Commands {
         public async void DeleteChannel(DiscordChannel channel) {
 
             await channel.DeleteAsync("Deleting temporary channel");
+
+        }
+
+        [Command("Who")]
+        [Description("High end ''AI'' determines who is the coolest person in the server")]
+        public async Task WhoIsTheCoolest(CommandContext ctx, [RemainingText]string text) {
+
+            if (text == "is the coolest?") {
+
+                int max = ctx.Guild.Members.Count;
+
+                var rd = new Random();
+
+                int rand = rd.Next(0, max);
+
+                DiscordMember[] users = ctx.Guild.Members.Values.ToArray();
+
+                await ctx.Channel.SendMessageAsync("<@" + users[rand].Id.ToString() + ">");
+
+                if (users[rand].Id == {Bot ID}) return; // Returns if the random user is the bot
+
+                var embed = new DiscordEmbedBuilder {
+
+                    Title = "@" + users[rand].Nickname.ToString() + " is the coolest!",
+                    Color = DiscordColor.Orange,
+                    Description = ":sunglasses:"
+
+                };
+
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+
+            }
+
+        }
+
+        [Command("How_old_is")]
+        [Description("Displays when a user joined the server")]
+        public async Task How_Old_Is(CommandContext ctx, long user_id) {
+
+            var user = ctx.Guild.GetMemberAsync((ulong)user_id);
+
+            var age = user.Result.JoinedAt;
+
+            await ctx.Channel.SendMessageAsync("<@" + user_id + ">");
+
+            var embed = new DiscordEmbedBuilder {
+
+                Title = "User joined at " + age.ToString(),
+                Color = DiscordColor.Rose,
+                Description = ":hourglass:"
+
+            };
+
+            await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+
+        }
+
+        [Command("Poll")]
+        [Description("")]
+        public async Task Poll(CommandContext ctx, [Description("Name of the poll")] string name, [Description("Duration of the poll")] TimeSpan duration, [Description("Vote options")] params DiscordEmoji[] emojiOptions) {
+
+            var interactivity = ctx.Client.GetInteractivity();
+            var options = emojiOptions.Select(x => x.ToString());
+
+            var pollEmbed = new DiscordEmbedBuilder {
+
+                Title = name,
+                Description = string.Join(" ", options),
+                Color = DiscordColor.SpringGreen
+
+            };
+
+            var pollMessage = await ctx.Channel.SendMessageAsync(embed: pollEmbed).ConfigureAwait(false);
+
+            foreach (var option in emojiOptions) {
+
+                await pollMessage.CreateReactionAsync(option).ConfigureAwait(false);
+
+            }
+
+            var result = await interactivity.CollectReactionsAsync(pollMessage, duration).ConfigureAwait(false);
+
+            var distinctResult = result.Distinct();
+
+            var results = distinctResult.Select(x => $"{x.Emoji}: {x.Total}");
+
+            await ctx.Channel.SendMessageAsync("'" + name + "' Poll results: ");
+
+            await ctx.Channel.SendMessageAsync(string.Join("\n", results)).ConfigureAwait(false);
 
         }
 
