@@ -106,13 +106,9 @@ namespace Epic_Bot.Commands {
 
         [Command("Tag")]
         [Description("Spams tags at a user")]
-        public async Task Tag(CommandContext ctx, string user) {
+        public async Task Tag(CommandContext ctx, [Description("Example: @User420")]string user, [Description("How many times the user should be tagged")]int amount) {
 
-            await ctx.Channel.SendMessageAsync(user);
-            await ctx.Channel.SendMessageAsync(user);
-            await ctx.Channel.SendMessageAsync(user);
-            await ctx.Channel.SendMessageAsync(user);
-            await ctx.Channel.SendMessageAsync(user);
+            for (int i = 0; i < amount; i++) await ctx.Channel.SendMessageAsync(user);
 
         }
 
