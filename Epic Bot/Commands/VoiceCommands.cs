@@ -8,10 +8,10 @@ namespace Epic_Bot.Commands {
 
         [Command("JoinVoice")]
         [Aliases("vc")]
-        [Description("")]
+        [Description("Connect to a voice channel")]
         public async Task Join(CommandContext ctx) {
 
-            if (ctx.Member.VoiceState == null) { return; }
+            if (ctx.Member.VoiceState == null) return;
 
             var vnext = ctx.Client.GetVoiceNext();
 
@@ -30,7 +30,7 @@ namespace Epic_Bot.Commands {
         }
 
         [Command("LeaveVoice")]
-        [Description("")]
+        [Description("Disconnect from a voice channel")]
         public async Task Leave(CommandContext ctx) {
 
             var vnext = ctx.Client.GetVoiceNext();

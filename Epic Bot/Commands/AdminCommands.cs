@@ -16,11 +16,25 @@ namespace Epic_Bot.Commands {
 
             for (int i = 0; i < adminIds.Length; i++) {
 
-                if (id == adminIds[i]) { return true; }
+                if (id == adminIds[i]) return true;
 
             }
 
             return false;
+
+        }
+
+        private async void SendErrorMessage(CommandContext ctx) {
+
+            var embed = new DiscordEmbedBuilder {
+
+                Title = "You do not have permission to use this command!",
+                Color = DiscordColor.Red,
+                Description = ":no_entry_sign:"
+
+            };
+
+            await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
         }
 
@@ -43,21 +57,13 @@ namespace Epic_Bot.Commands {
 
                 };
 
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
                 Console.WriteLine("Status changed to: " + input);
 
             } else {
 
-                var embed = new DiscordEmbedBuilder {
-
-                    Title = "You do not have permission to use this command.",
-                    Color = DiscordColor.Red,
-                    Description = ":no_entry_sign:"
-
-                };
-
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+                SendErrorMessage(ctx);
 
             }
 
@@ -73,7 +79,7 @@ namespace Epic_Bot.Commands {
 
             } else {
 
-                await ctx.Channel.SendMessageAsync("You do not have permission to use this command.").ConfigureAwait(false);
+                SendErrorMessage(ctx);
 
             }
 
@@ -93,21 +99,13 @@ namespace Epic_Bot.Commands {
 
                 };
 
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
-                Environment.Exit(0);
+                Environment.Exit(0); // Exits the application
 
             } else {
 
-                var embed = new DiscordEmbedBuilder {
-
-                    Title = "You do not have permission to use this command.",
-                    Color = DiscordColor.Red,
-                    Description = ":no_entry_sign:"
-
-                };
-
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+                SendErrorMessage(ctx);
 
             }
 
@@ -128,7 +126,7 @@ namespace Epic_Bot.Commands {
 
                 };
 
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
                 string path = Environment.CurrentDirectory + @"\PepejdzaBot.BotsRepaired.exe";
 
@@ -138,15 +136,7 @@ namespace Epic_Bot.Commands {
 
             } else {
 
-                var embed = new DiscordEmbedBuilder {
-
-                    Title = "You do not have permission to use this command.",
-                    Color = DiscordColor.Red,
-                    Description = ":no_entry_sign:"
-
-                };
-
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+                SendErrorMessage(ctx);
 
             }
 
@@ -159,7 +149,6 @@ namespace Epic_Bot.Commands {
             if (IsAdmin(ctx.User.Id)) {
 
                 var os = Environment.OSVersion;
-                var user = Environment.UserName;
                 var cpu = Environment.ProcessorCount;
                 var version = Environment.Version;
                 var bit = Environment.Is64BitProcess;
@@ -172,19 +161,11 @@ namespace Epic_Bot.Commands {
 
                 };
 
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
             } else {
 
-                var embed = new DiscordEmbedBuilder {
-
-                    Title = "You do not have permission to use this command.",
-                    Color = DiscordColor.Red,
-                    Description = ":no_entry_sign:"
-
-                };
-
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+                SendErrorMessage(ctx);
 
             }
 

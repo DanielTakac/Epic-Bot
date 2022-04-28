@@ -20,7 +20,7 @@ namespace Epic_Bot.Commands {
 
             };
 
-            var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+            await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
         }
 
@@ -36,7 +36,7 @@ namespace Epic_Bot.Commands {
 
             };
 
-            var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+            await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
         }
 
@@ -52,7 +52,7 @@ namespace Epic_Bot.Commands {
 
             };
 
-            var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+            await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
         }
 
@@ -68,7 +68,7 @@ namespace Epic_Bot.Commands {
 
             };
 
-            var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+            await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
         }
 
@@ -86,7 +86,7 @@ namespace Epic_Bot.Commands {
 
                 };
 
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
             } else {
 
@@ -98,7 +98,7 @@ namespace Epic_Bot.Commands {
 
                 };
 
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
             }
 
@@ -118,7 +118,7 @@ namespace Epic_Bot.Commands {
 
                 };
 
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
             } else {
 
@@ -130,7 +130,7 @@ namespace Epic_Bot.Commands {
 
                 };
 
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
             }
 
@@ -150,7 +150,7 @@ namespace Epic_Bot.Commands {
 
                 };
 
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
             } else {
 
@@ -162,7 +162,7 @@ namespace Epic_Bot.Commands {
 
                 };
 
-                var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
             }
 
@@ -180,7 +180,7 @@ namespace Epic_Bot.Commands {
 
             };
 
-            var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+            await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
         }
 
@@ -204,7 +204,7 @@ namespace Epic_Bot.Commands {
 
             bool succeeded = await inputDialogueHandler.ProcessDialogue().ConfigureAwait(false);
 
-            if (!succeeded) { return; }
+            if (!succeeded) return;
 
             string V = string.Empty;
 
@@ -269,7 +269,7 @@ namespace Epic_Bot.Commands {
 
             }
 
-            var message = await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+            await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
 
         }
 

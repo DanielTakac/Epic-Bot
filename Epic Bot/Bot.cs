@@ -50,13 +50,9 @@ namespace PepejdzaBot {
             });
 
             Client.Ready += OnClientReady;
-
             Client.MessageCreated += Client_MessageCreated;
-
             Client.MessageDeleted += Client_MessageDeleted;
-
             Client.GuildMemberAdded += Client_GuildMemberAdded;
-
             Client.GuildMemberRemoved += Client_GuildMemberRemoved;
 
             Client.UseInteractivity(new InteractivityConfiguration {
@@ -84,7 +80,6 @@ namespace PepejdzaBot {
             Commands.RegisterCommands<MathCommands>();
             Commands.RegisterCommands<AdminCommands>();
             Commands.RegisterCommands<VoiceCommands>();
-            Commands.RegisterCommands<OtherCommands>();
 
             await Client.ConnectAsync();
 

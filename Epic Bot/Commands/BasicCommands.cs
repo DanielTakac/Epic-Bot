@@ -143,20 +143,14 @@ namespace Epic_Bot.Commands {
         [Description("Creates a temporary discord channel")]
         public async Task Channel(CommandContext ctx) {
 
-            if (ctx.Guild.Id != 760171471308980254) {
-
-                return;
-
-            }
+            if (ctx.Guild.Id != 760171471308980254) return;
 
             var intStep3 = new IntStep("Choose how long the channel should last (in hours)", null, 1);
             var textStep2 = new TextStep("Choose a name for the temporary voice channel", intStep3);
             var textStep1 = new TextStep("Choose the type of channel to be created (voice/text)", textStep2);
 
             int channelTime = 0;
-
             string channelName = string.Empty;
-
             string channelType = string.Empty;
 
             textStep1.OnValidResult += (result1) => channelType = result1;
@@ -167,7 +161,7 @@ namespace Epic_Bot.Commands {
 
             bool succeeded = await inputDialogueHandler.ProcessDialogue().ConfigureAwait(false);
 
-            if (!succeeded) { return; }
+            if (!succeeded) return;
 
             DiscordChannel channel = ctx.Guild.CreateChannelAsync("Voice", ChannelType.Voice).Result;
 
@@ -199,7 +193,7 @@ namespace Epic_Bot.Commands {
 
                 };
 
-                var errorMessage = await ctx.Channel.SendMessageAsync(embed: errorEmbed).ConfigureAwait(false);
+                await ctx.Channel.SendMessageAsync(embed: errorEmbed).ConfigureAwait(false);
 
                 return;
 
