@@ -35,6 +35,3 @@ Made using ***C#/DSharpPlus***
 #### Voice Commands:
 - JoinVoice
 - LeaveVoice
-
-#### Other Commands:
-- GitHub
