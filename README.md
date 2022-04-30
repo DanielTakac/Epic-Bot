@@ -1,6 +1,6 @@
 # Epic-Bot
 
-#### Dogshit discord bot made by ***Daniel Takac*** and ***Jakub Svagerko***
+#### Dogshit discord bot
 
 Made using ***C#/DSharpPlus***
 
