@@ -9,12 +9,12 @@ using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Extensions;
 using DSharpPlus.Entities;
 using DSharpPlus.VoiceNext;
-using Epic_Bot;
 using Epic_Bot.Commands;
+using Newtonsoft.Json.Linq;
 
-namespace PepejdzaBot {
+namespace Epic_Bot{
 
-    public class Bot {
+    public partial class Bot {
 
         public DiscordClient Client { get; private set; }
         public InteractivityExtension interactivity { get; private set; }
@@ -122,14 +122,17 @@ namespace PepejdzaBot {
 
         }
 
-        public class User{
+        public static User GetUser(){
 
-            public string Username { get; private set; }
-            public ulong Id { get; private set; }
-            public int Xp { get; private set; }
-            public int Level { get; private set; }
+            var json = string.Empty;
 
+            using (var fs = File.OpenRead("User.json"))
+            using (var sr = new StreamReader(fs, new UTF8Encoding(false)))
+            json = sr.ReadToEnd();
 
+            var user = JsonConvert.DeserializeObject<User>(json);
+
+            return user;
 
         }
 
@@ -141,10 +144,68 @@ namespace PepejdzaBot {
 
             if (e.Guild == null || e.Guild.Id != 969296497512435833 || hasPrefix) return Task.CompletedTask;
 
-
+            ExpUp(e.Author.Id, e);
 
             return Task.CompletedTask;
 
+        }
+
+        private void ExpUp(ulong id, MessageCreateEventArgs e){
+
+            var user = GetUser();
+
+            int experience = user.GetXp();
+
+            var rd = new Random();
+
+            int expPerMessage = rd.Next(15, 30);
+
+            const int expToLevelUp = 1000;
+
+            experience += expPerMessage;
+
+            if (experience >= expToLevelUp){
+
+                int leftOverExp = experience - expToLevelUp;
+
+                LevelUp(leftOverExp, id, e);
+
+            }
+
+        }
+
+        private async void LevelUp(int leftOverExp, ulong id, MessageCreateEventArgs e){
+
+            var user = GetUser();
+
+            int level = user.GetLevel();
+
+            Rewrite("User.json", "xp", leftOverExp);
+
+            Rewrite("User.json", "level", level + 1);
+
+            var embed = new DiscordEmbedBuilder{
+
+                Title = $"User **{e.Message.Author.Username}** just leveled up to LVL **{level + 1}**!",
+                Color = DiscordColor.SpringGreen,
+                Description = ":cold_face: :cold_face: :cold_face:"
+
+            };
+
+            await e.Channel.SendMessageAsync("<@" + e.Message.Author.Id + ">").ConfigureAwait(false);
+
+            await e.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+
+        }
+
+        public static void Rewrite(string fileName, string token, int newData){
+
+            string jsonString = File.ReadAllText(fileName);
+            JObject jObject = JsonConvert.DeserializeObject(jsonString) as JObject;
+            JToken jToken = jObject.SelectToken(token);
+            jToken.Replace(newData);
+            string updatedJsonString = jObject.ToString();
+            File.WriteAllText(fileName, updatedJsonString);
 
         }
 

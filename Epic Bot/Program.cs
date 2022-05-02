@@ -1,4 +1,4 @@
-namespace PepejdzaBot {
+namespace Epic_Bot {
 
     class Program {
 
