@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\herod\\OneDrive\\Počítač\\Source\\Repos\\Epic-Bot\\Epic Bot\\Epic Bot.csproj": {}
+    "C:\\Users\\herod\\OneDrive\\Počítač\\Epic-Bot\\Epic Bot\\Epic Bot.csproj": {}
   },
   "projects": {
-    "C:\\Users\\herod\\OneDrive\\Počítač\\Source\\Repos\\Epic-Bot\\Epic Bot\\Epic Bot.csproj": {
+    "C:\\Users\\herod\\OneDrive\\Počítač\\Epic-Bot\\Epic Bot\\Epic Bot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\herod\\OneDrive\\Počítač\\Source\\Repos\\Epic-Bot\\Epic Bot\\Epic Bot.csproj",
+        "projectUniqueName": "C:\\Users\\herod\\OneDrive\\Počítač\\Epic-Bot\\Epic Bot\\Epic Bot.csproj",
         "projectName": "Epic Bot",
-        "projectPath": "C:\\Users\\herod\\OneDrive\\Počítač\\Source\\Repos\\Epic-Bot\\Epic Bot\\Epic Bot.csproj",
+        "projectPath": "C:\\Users\\herod\\OneDrive\\Počítač\\Epic-Bot\\Epic Bot\\Epic Bot.csproj",
         "packagesPath": "C:\\Users\\herod\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\herod\\OneDrive\\Počítač\\Source\\Repos\\Epic-Bot\\Epic Bot\\obj\\",
+        "outputPath": "C:\\Users\\herod\\OneDrive\\Počítač\\Epic-Bot\\Epic Bot\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "H:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\herod\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\herod\\source\\repos\\NuGet": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -51,23 +46,23 @@
             },
             "DSharpPlus": {
               "target": "Package",
-              "version": "[4.1.0, )"
+              "version": "[4.2.0, )"
             },
             "DSharpPlus.CommandsNext": {
               "target": "Package",
-              "version": "[4.1.0, )"
+              "version": "[4.2.0, )"
             },
             "DSharpPlus.Interactivity": {
               "target": "Package",
-              "version": "[4.1.0, )"
+              "version": "[4.2.0, )"
             },
             "DSharpPlus.Lavalink": {
               "target": "Package",
-              "version": "[4.1.0, )"
+              "version": "[4.2.0, )"
             },
             "DSharpPlus.VoiceNext": {
               "target": "Package",
-              "version": "[4.1.0, )"
+              "version": "[4.2.0, )"
             },
             "GiphyDotNet": {
               "target": "Package",
@@ -93,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
