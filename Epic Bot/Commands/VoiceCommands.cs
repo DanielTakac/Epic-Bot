@@ -47,30 +47,23 @@ namespace Epic_Bot.Commands {
 
         }
 
-        // Finish Later
-
-        /*[Command("VoteMute")]
+        [Command("VoteMute")]
         [Aliases("VM")]
         [Description("Vote to mute a user")]
         public async Task VoteMute(CommandContext ctx, ulong id) {
 
             if (ctx.Guild == null) return; // Returns if the message was in a DM
+            if (ctx.Guild.Id != 969296497512435833) return; // Returns if the message was in a different server
+
+            ulong emoji1 = 970646703319449682;
+            ulong emoji2 = 970646703382351922;
 
             var user = await ctx.Guild.GetMemberAsync(id);
 
             List<DiscordEmoji> emojiOptions = new List<DiscordEmoji>();
 
-            if (ctx.Guild.Id == 760171471308980254) {
-
-                emojiOptions.Add(ctx.Guild.GetEmojiAsync(926646675387338763).Result);
-                emojiOptions.Add(ctx.Guild.GetEmojiAsync(926647059744960512).Result);
-
-            } else if (ctx.Guild.Id == 748425033587752991) {
-
-                emojiOptions.Add(ctx.Guild.GetEmojiAsync(929128637410721802).Result);
-                emojiOptions.Add(ctx.Guild.GetEmojiAsync(929128572944269332).Result);
-
-            }
+            emojiOptions.Add(ctx.Guild.GetEmojiAsync(emoji1).Result);
+            emojiOptions.Add(ctx.Guild.GetEmojiAsync(emoji2).Result);
 
             var interactivity = ctx.Client.GetInteractivity();
             var options = emojiOptions.Select(x => x.ToString());
@@ -104,8 +97,8 @@ namespace Epic_Bot.Commands {
 
                 for (int i = 0; i < result.Count; i++) {
 
-                    if (result[i].Emoji.Id == 926646675387338763) { yepCount++; }
-                    if (result[i].Emoji.Id == 926647059744960512) { nopeCount++; }
+                    if (result[i].Emoji.Id == emoji1) { yepCount++; }
+                    if (result[i].Emoji.Id == emoji2) { nopeCount++; }
 
                 }
 
@@ -157,7 +150,7 @@ namespace Epic_Bot.Commands {
 
             await user.SetMuteAsync(false);
 
-        }*/
+        }
 
     }
 

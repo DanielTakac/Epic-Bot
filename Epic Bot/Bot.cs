@@ -122,11 +122,29 @@ namespace PepejdzaBot {
 
         }
 
+        public class User{
+
+            public string Username { get; private set; }
+            public ulong Id { get; private set; }
+            public int Xp { get; private set; }
+            public int Level { get; private set; }
+
+
+
+        }
+
         private Task Client_MessageCreated(DiscordClient sender, MessageCreateEventArgs e) {
 
             // What happens when a message is created
 
+            bool hasPrefix = e.Message.Content.Contains("#");
+
+            if (e.Guild == null || e.Guild.Id != 969296497512435833 || hasPrefix) return Task.CompletedTask;
+
+
+
             return Task.CompletedTask;
+
 
         }
 

@@ -236,7 +236,7 @@ namespace Epic_Bot.Commands {
 
                 await ctx.Channel.SendMessageAsync("<@" + users[rand].Id.ToString() + ">");
 
-                if (users[rand].Id == {Bot ID}) return; // Returns if the random user is the bot
+                if (users[rand].Id == 969292126221394020) return; // Returns if the random user is the bot
 
                 var embed = new DiscordEmbedBuilder {
 
