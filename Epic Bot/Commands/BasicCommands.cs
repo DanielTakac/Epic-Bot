@@ -5,7 +5,6 @@ using DSharpPlus.Entities;
 using DSharpPlus.Interactivity.Extensions;
 using GiphyDotNet.Manager;
 using GiphyDotNet.Model.Parameters;
-using PepejdzaBot;
 using PepejdzaBot.Handlers.Dialogue;
 using PepejdzaBot.Handlers.Dialogue.Steps;
 
@@ -144,7 +143,7 @@ namespace Epic_Bot.Commands {
         [Description("Creates a temporary discord channel")]
         public async Task Channel(CommandContext ctx) {
 
-            if (ctx.Guild.Id != 760171471308980254) return;
+            if (ctx.Guild.Id != 969296497512435833) return;
 
             var intStep3 = new IntStep("Choose how long the channel should last (in hours)", null, 1);
             var textStep2 = new TextStep("Choose a name for the temporary voice channel", intStep3);

@@ -2,6 +2,7 @@
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
+using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 
 namespace Epic_Bot.Commands {
@@ -40,7 +41,7 @@ namespace Epic_Bot.Commands {
 
         [Command("Set_Status")]
         [Description("Change the bot's status")]
-        public async Task SetStatus(CommandContext ctx, [Description("Activity Name")] string input) {
+        public async Task SetStatus(CommandContext ctx, [Description("Activity Name")][RemainingText] string input) {
 
             if (IsAdmin(ctx.User.Id)) {
 
@@ -235,7 +236,7 @@ namespace Epic_Bot.Commands {
 
                 var member = ctx.Guild.GetMemberAsync((ulong)user_id);
 
-                var name = member.Result.Nickname;
+                var name = member.Result.Username;
 
                 var embed = new DiscordEmbedBuilder {
 
@@ -256,6 +257,35 @@ namespace Epic_Bot.Commands {
             }
 
         }
+
+        [Command("Set_balance")]
+        [Aliases("set_bal")]
+        public async Task SetBalance(CommandContext ctx, int money){
+
+            if (IsAdmin(ctx.User.Id)){
+
+                var user = Bot.GetUser();
+
+                Bot.Rewrite("User.json", "balance", money);
+
+                var embed = new DiscordEmbedBuilder{
+
+                    Title = $"Set user *{user.GetUsername()}* with ID *{user.GetId()}* balance to **${money}**",
+                    Color = DiscordColor.Orange,
+                    Description = ":moneybag:"
+
+                };
+
+                await ctx.Channel.SendMessageAsync(embed: embed).ConfigureAwait(false);
+
+            } else{
+
+                SendErrorMessage(ctx);
+
+            }
+
+        }
+
 
     }
 

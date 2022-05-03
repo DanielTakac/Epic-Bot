@@ -132,6 +132,16 @@ namespace Epic_Bot{
 
             var user = JsonConvert.DeserializeObject<User>(json);
 
+            try {
+
+                return user;
+
+            } catch (NullReferenceException e) {
+
+                Console.WriteLine("{0} Exception caught.", e);
+
+            }
+
             return user;
 
         }
@@ -142,15 +152,15 @@ namespace Epic_Bot{
 
             bool hasPrefix = e.Message.Content.Contains("#");
 
-            if (e.Guild == null || e.Guild.Id != 969296497512435833 || hasPrefix) return Task.CompletedTask;
+            if (e.Guild == null || e.Guild.Id != 969296497512435833 || hasPrefix || e.Author.Id == 969292126221394020) return Task.CompletedTask;
 
-            ExpUp(e.Author.Id, e);
+            ExpUp(e);
 
             return Task.CompletedTask;
 
         }
 
-        private void ExpUp(ulong id, MessageCreateEventArgs e){
+        private void ExpUp(MessageCreateEventArgs e){
 
             var user = GetUser();
 
@@ -158,7 +168,7 @@ namespace Epic_Bot{
 
             var rd = new Random();
 
-            int expPerMessage = rd.Next(15, 30);
+            int expPerMessage = rd.Next(60, 120);
 
             const int expToLevelUp = 1000;
 
@@ -168,13 +178,17 @@ namespace Epic_Bot{
 
                 int leftOverExp = experience - expToLevelUp;
 
-                LevelUp(leftOverExp, id, e);
+                LevelUp(leftOverExp, e);
+
+            } else{
+
+                Rewrite("User.json", "xp", experience);
 
             }
 
         }
 
-        private async void LevelUp(int leftOverExp, ulong id, MessageCreateEventArgs e){
+        private async void LevelUp(int leftOverExp, MessageCreateEventArgs e){
 
             var user = GetUser();
 
@@ -215,7 +229,7 @@ namespace Epic_Bot{
 
             if (e.Guild == null) return; // Returns if the message was in a DM
 
-            ulong[] blacklistedUsers = { 503234820457889802, 462269249902346241 };
+            ulong[] blacklistedUsers = { 969292126221394020 };
 
             bool hasContent = false;
             bool hasId = false;
