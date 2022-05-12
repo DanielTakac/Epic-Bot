@@ -1,7 +1,5 @@
 # Epic-Bot
 
-#### Dogshit discord bot
-
 Made using ***C#/DSharpPlus***
 
 #### Basic Commands:
