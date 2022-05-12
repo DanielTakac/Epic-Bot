@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YkTsnTSqzKOM6WXkUZW7yDI9rokKjP0PRJcTOkNVNQhIQB5p/mBirdGSNazShQPqSN1xBbypYQPEsSx8lWrzog==",
+  "dgSpecHash": "vBjRaKD8ABMsXujndQbP6lV2y28GL6AJOcuDviCjFn492990pW3V3xjUWS4xlbCN1JGt0dGkHC3m2BvbiX9mww==",
   "success": true,
-  "projectFilePath": "C:\\Users\\herod\\OneDrive\\Počítač\\Source\\Repos\\Epic-Bot\\Epic Bot\\Epic Bot.csproj",
+  "projectFilePath": "C:\\Users\\herod\\OneDrive\\Počítač\\Epic-Bot\\Epic Bot\\Epic Bot.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\herod\\.nuget\\packages\\actionscheduler\\2.0.0\\actionscheduler.2.0.0.nupkg.sha512",
     "C:\\Users\\herod\\.nuget\\packages\\concurrenthashset\\1.1.0\\concurrenthashset.1.1.0.nupkg.sha512",

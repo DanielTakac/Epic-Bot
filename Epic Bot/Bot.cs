@@ -80,6 +80,7 @@ namespace Epic_Bot{
             Commands.RegisterCommands<MathCommands>();
             Commands.RegisterCommands<AdminCommands>();
             Commands.RegisterCommands<VoiceCommands>();
+            Commands.RegisterCommands<OtherCommands>();
 
             await Client.ConnectAsync();
 
